@@ -16,17 +16,15 @@ class Arc
         Node * first_node;
         Node * second_node;
 
-        // Declare the arc's ID
-        vector<Node *> id;
-
         // Declare the attributes map
-        unordered_map<string,double> attributes;
+        vector<double> attributes;
 
     // Create getters, setters and the constructor
     public:
 
         // Setter for first node
-        void setFirstNode(Node * node1) {
+        void setFirstNode(Node * node1)
+        {
             first_node = node1;
         }
 
@@ -48,37 +46,24 @@ class Arc
             return second_node;
         }
 
-        // Setter for arc's ID
-        void setID(vector<Node *> value)
-        {
-            id = value;
-        }
-
-        // Getter for arc's ID
-        vector<Node *> getID()
-        {
-            return id;
-        }
-
         // Setter for an attribute
-        void setAttribute(string & key, double value)
+        void setAttribute(size_t index, double value)
         {
-            attributes[key] = value;
+            attributes[index] = value;
         }
 
         // Getter for an attribute
-        double getAttribute(string & key)
+        double getAttribute(size_t index)
         {
-            return attributes[key];
+            return attributes[index];
         }
 
         // Class constructor
-        Arc(Node * node1, Node * node2)
+        Arc(Node * node1, Node * node2, size_t params = 0)
         {
             setFirstNode(node1);
             setSecondNode(node2);
-            vector<Node *> ID = { node1, node2 };
-            setID(ID);
+            attributes.resize(params,0);
         }
 
 };

@@ -1,8 +1,6 @@
 #ifndef NODE_H
 #define NODE_H
 
-#include <unordered_map>
-
 using namespace std;
 
 // Node class
@@ -13,41 +11,48 @@ class Node
     private:
 
         // Declare the node's ID
-        unsigned int id;
-        // Declare the attributes map
-        unordered_map<string,double> attributes;
+        size_t id;
+        // Declare the attributes vector
+        vector<double> attributes;
 
     // Create getters, setters and the constructor
     public:
 
         // Setter for node's ID
-        void setID(unsigned int value)
+        void setID(size_t value)
         {
             id = value;
         }
 
         // Getter for node's ID
-        unsigned int getID()
+        size_t getID()
         {
             return id;
         }
 
         // Setter for an attribute
-        void setAttribute(string & key, double value)
+        void setAttribute(size_t index, double value)
         {
-            attributes[key] = value;
+            if (attributes.size() > index)
+            {
+                attributes[index] = value;
+            }
         }
 
         // Getter for an attribute
-        double getAttribute(string & key)
+        double getAttribute(size_t index)
         {
-            return attributes[key];
+            if (attributes.size() > index)
+            {
+                return attributes[index];
+            }
         }
 
         // Class constructor
-        Node(unsigned int value)
+        Node(size_t value, size_t params = 0)
         {
             setID(value);
+            attributes.resize(params,0);
         }
 
 };
