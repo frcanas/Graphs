@@ -1,7 +1,6 @@
 #ifndef GRAPH_H
 #define GRAPH_H
 
-#include <vector>
 #include "arc.h"
 
 using namespace std;
@@ -15,7 +14,7 @@ class Graph
 
         // Declare the sets of nodes and arcs
         unordered_map<unsigned int, Node *> Nodes;
-        unordered_map<vector<unsigned int>, Arc *> Arcs;
+        unordered_map<vector<Node *>, Arc *> Arcs;
 
     // Create getters, setters and the constructor
     public:
@@ -35,12 +34,15 @@ class Graph
         // Add an arc
         void addArc(Arc * arc)
         {
-            vector<unsigned int> IDs = { arc->getFirstNode()->getID(), arc->getSecondNode()->getID() };
-            Arcs[IDs] = arc;
+            Arcs[arc->getID()] = arc;
         }
 
         // Get an arc
-        Arc * getArc(unsigned int ID1, unsigned int ID2)
+        Arc * getArc(Node * first_node, Node * second_node)
+        {
+            vector<Node *> ID = { first_node, second_node };
+            return Arcs[ID];
+        }
 
 };
 
