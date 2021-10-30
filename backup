@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Root folder (folder where all the necessary folders are).
+root_folder="/home/frcanas/Documents"
+
+# What to backup. 
+backup_files="$root_folder/Graphs/*"
+
+# Where to backup to.
+dest="$root_folder/Graphs_backup"
+dest2="$dest/*"
+
+# Print start status message.
+echo
+echo "Backing up $backup_files to $dest..."
+
+# If the backup folder doesn't exist yet, create it.
+mkdir -p $dest
+
+# Clear contents of the destination folder.
+rm -r $dest2
+
+# Backup the files.
+cp -a -u $backup_files $dest
+
+# Print end status message.
+echo "Backup finished!"
+echo
