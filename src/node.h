@@ -1,6 +1,9 @@
 #ifndef NODE_H
 #define NODE_H
 
+#include <iostream>
+#include <vector>
+
 using namespace std;
 
 // Node class
@@ -18,42 +21,23 @@ class Node
     // Create getters, setters and the constructor
     public:
 
+        // Class constructor
+        Node(size_t value, size_t params = 0);
+
+        // Class destructor
+        ~Node();
+
         // Setter for node's ID
-        void setID(size_t value)
-        {
-            id = value;
-        }
+        void setID(size_t value);
 
         // Getter for node's ID
-        size_t getID()
-        {
-            return id;
-        }
+        size_t getID();
 
         // Setter for an attribute
-        void setAttribute(size_t index, double value)
-        {
-            if (attributes.size() > index)
-            {
-                attributes[index] = value;
-            }
-        }
+        void setAttribute(size_t index, double value);
 
         // Getter for an attribute
-        double getAttribute(size_t index)
-        {
-            if (attributes.size() > index)
-            {
-                return attributes[index];
-            }
-        }
-
-        // Class constructor
-        Node(size_t value, size_t params = 0)
-        {
-            setID(value);
-            attributes.resize(params,0);
-        }
+        double getAttribute(size_t index);
 
 };
 

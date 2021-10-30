@@ -1,6 +1,8 @@
 #ifndef ARC_H
 #define ARC_H
 
+#include <iostream>
+#include <vector>
 #include "node.h"
 
 using namespace std;
@@ -22,49 +24,29 @@ class Arc
     // Create getters, setters and the constructor
     public:
 
+        // Class constructor
+        Arc(Node * node1, Node * node2, size_t params = 0);
+
+        // Class destructor
+        ~Arc();
+
         // Setter for first node
-        void setFirstNode(Node * node1)
-        {
-            first_node = node1;
-        }
+        void setFirstNode(Node * node1);
 
         // Getter for first node
-        Node * getFirstNode()
-        {
-            return first_node;
-        }
+        Node * getFirstNode();
 
         // Setter for second node
-        void setSecondNode(Node * node2)
-        {
-            second_node = node2;
-        }
+        void setSecondNode(Node * node2);
 
         // Getter for second node
-        Node * getSecondNode()
-        {
-            return second_node;
-        }
+        Node * getSecondNode();
 
         // Setter for an attribute
-        void setAttribute(size_t index, double value)
-        {
-            attributes[index] = value;
-        }
+        void setAttribute(size_t index, double value);
 
         // Getter for an attribute
-        double getAttribute(size_t index)
-        {
-            return attributes[index];
-        }
-
-        // Class constructor
-        Arc(Node * node1, Node * node2, size_t params = 0)
-        {
-            setFirstNode(node1);
-            setSecondNode(node2);
-            attributes.resize(params,0);
-        }
+        double getAttribute(size_t index);
 
 };
 
