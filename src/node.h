@@ -15,20 +15,22 @@ class Node
 
         // Declare the node's ID
         size_t id;
+        static size_t next_id;
+
         // Declare the attributes vector
         vector<double> attributes;
 
-    // Create getters, setters and the constructor
+    // Create the constructor, destructor, getters and setters
     public:
 
         // Class constructor
-        Node(size_t value, size_t params = 0);
+        Node(size_t _attributes = 0);
 
         // Class destructor
         ~Node();
 
         // Setter for node's ID
-        void setID(size_t value);
+        void setID(size_t _id);
 
         // Getter for node's ID
         size_t getID();

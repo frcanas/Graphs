@@ -1,10 +1,15 @@
 #include "node.h"
 
+// Initialize the id's to 0
+size_t Node::next_id = 0;
+
 // Class constructor
-Node::Node(size_t value, size_t params)
+Node::Node(size_t _attributes)
 {
-    setID(value);
-    attributes.resize(params,0);
+    const size_t temp = _attributes;
+    setID(next_id);
+    next_id++;
+    attributes.resize(_attributes,0);
 }
 
 // Class destructor
@@ -14,9 +19,9 @@ Node::~Node()
 }
 
 // Setter for node's ID
-void Node::setID(size_t value)
+void Node::setID(size_t _id)
 {
-    id = value;
+    id = _id;
 }
 
 // Getter for node's ID
@@ -28,10 +33,11 @@ size_t Node::getID()
 // Setter for an attribute
 void Node::setAttribute(size_t index, double value)
 {
-    if (attributes.size() > index)
+    if (attributes.size() <= index)
     {
-        attributes[index] = value;
+        attributes.resize(index+1);
     }
+    attributes[index] = value;
 }
 
 // Getter for an attribute

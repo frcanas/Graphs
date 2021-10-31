@@ -1,11 +1,11 @@
 #include "arc.h"
 
 // Class constructor
-Arc::Arc(Node * node1, Node * node2, size_t params)
+Arc::Arc(Node * node1, Node * node2, size_t _attributes)
 {
     setFirstNode(node1);
     setSecondNode(node2);
-    attributes.resize(params,0);
+    attributes.resize(_attributes,0);
 }
 
 // Class destructor
@@ -41,10 +41,11 @@ Node * Arc::getSecondNode()
 // Setter for an attribute
 void Arc::setAttribute(size_t index, double value)
 {
-    if (attributes.size() > index)
+    if (attributes.size() <= index)
     {
-        attributes[index] = value;
+        attributes.resize(index+1);
     }
+    attributes[index] = value;
 }
 
 // Getter for an attribute

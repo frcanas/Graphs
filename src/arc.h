@@ -1,8 +1,6 @@
 #ifndef ARC_H
 #define ARC_H
 
-#include <iostream>
-#include <vector>
 #include "node.h"
 
 using namespace std;
@@ -18,14 +16,14 @@ class Arc
         Node * first_node;
         Node * second_node;
 
-        // Declare the attributes map
+        // Declare the attributes array
         vector<double> attributes;
 
-    // Create getters, setters and the constructor
+    // Create the constructor, destructor, getters and setters
     public:
 
         // Class constructor
-        Arc(Node * node1, Node * node2, size_t params = 0);
+        Arc(Node * node1, Node * node2, size_t _attributes = 0);
 
         // Class destructor
         ~Arc();
